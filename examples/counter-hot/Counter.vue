@@ -1,29 +1,35 @@
 <template>
-  <div>
-    Value: {{ count }}
-    <button @click="increment">+</button>
-    <button @click="decrement">-</button>
-    <button @click="incrementIfOdd">Increment if odd</button>
-    <button @click="incrementAsync">Increment async</button>
-    <div>
-      <div>Recent History (last 5 entries): {{ recentHistory }}</div>
-    </div>
-  </div>
+<div>
+Count: {{ count }}
+<p>
+<button @click="increment">+</button>
+<button @click="decrement">-</button>
+<button @click="incrementIfOdd">Increment if odd</button>
+<button @click="incrementAsync">Increment async</button>
+</p>
+<p><b>Recent History (last {{$store.state.limit}} entries): </b><br/>{{ recentHistory }}</p>
+</div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
-  computed: mapGetters([
-    'count',
-    'recentHistory'
-  ]),
-  methods: mapActions([
-    'increment',
-    'decrement',
-    'incrementIfOdd',
-    'incrementAsync'
-  ])
+	computed: {
+		/*...mapState({
+			limit:"limit"
+		}),*/
+		...mapGetters([
+			'limit',
+			'count',
+			'recentHistory'
+		])
+	},
+	methods: mapActions([
+		'increment',
+		'decrement',
+		'incrementIfOdd',
+		'incrementAsync'
+	])
 }
 </script>

@@ -10,9 +10,11 @@ const compiler = webpack(WebpackConfig)
 app.use(webpackDevMiddleware(compiler, {
   publicPath: '/__build__/',
   stats: {
-    colors: true,
-    chunks: false
-  }
+    "colors": true,
+    "chunks": false,
+  },
+  "noInfo":true,
+  "clientLogLevel":"none"
 }))
 
 app.use(webpackHotMiddleware(compiler))

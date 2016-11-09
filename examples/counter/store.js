@@ -55,35 +55,51 @@ const actions = {
       }, 1000)
     })
   },
-  resetCount ( {commit} ){
-	  return commit("resetCount")
+  iDouble:({commit})=>new Promise((resolve,reject)=>{
+	commit("increment");
+	resolve();	 
+  }),
+  incrementDouble:({dispatch,commit})=> {
+	dispatch("iDouble").then(()=>{
+		commit("increment");
+	})
+	
   },
-  incrementDouble:({commit})=> commit("incrementDouble"),
   decrementDouble:( ops, payload )=> {
 	  // console.log( "actions", ops, payload );
 	  ops.commit("decrementDouble", payload );
   },
-  
+  resetCount ( {commit} ){
+	  return commit("resetCount")
+  },
 }
 
 // getters are functions , 一个可以在多个 组件中 调用的方法集；在组件 使用 mapGetters 方法映射到组件中
 const getters = {
   evenOrOdd: state => state.count % 2 === 0 ? 'even' : 'odd',
   showMsg:(state, getters) => {
-	  console.log( state, "getters", getters);
-	  
+	  // console.log( state, "getters", getters);
 	  
 	  return getters.evenOrOdd;
   }
 }
 
-// A Vuex instance is created by combining the state, mutations, actions,
-// and getters.
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state,
   getters,
   actions,
   mutations
-})
+});
+
+// 使用热加载，需将 getters、actions、mutations 拆分成 commonJS模块
+/* if( module.hot ){
+	module.hot.accept([])
+} */
+
+export default store
+
+
+
+
 
 

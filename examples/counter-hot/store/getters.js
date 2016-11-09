@@ -1,12 +1,14 @@
+export const limit = state => state.limit
+
 export const count = state => state.count
 
-const limit = 5
-
 export const recentHistory = state => {
-  const end = state.history.length
-  const begin = end - limit < 0 ? 0 : end - limit
-  return state.history
-    .slice(begin, end)
-    .toString()
-    .replace(/,/g, ', ')
+	const {limit, history} = state
+	const end = history.length
+
+	const begin = end - limit < 0 ? 0 : end - limit
+	return history
+	.slice(begin, end)
+	.toString()
+	.replace(/,/g, ', ')
 }
