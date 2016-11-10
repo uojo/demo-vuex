@@ -21,7 +21,7 @@ new Vue({
 		
 		return createElement(Counter);
 	}
-})
+});
 
 
 // 注意：

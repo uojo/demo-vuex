@@ -13,7 +13,9 @@
 			<button @click="decrementDouble(-2)" title="payload > commit">DecrementDouble</button>
 			<button @click="resetCount" title="">Reset</button>
 		</p>
-		<p> 局部数据：<b title="">{{a0}}</b> ，{{a1}} {{s1}}顶层的 data 无法传递下来</p>
+		<p> 该组件内的局部数据：<b title="">{{a0}}</b> </p>
+		<p> 通过 computed 定义的数： {{countHot}} {{countRed}} </p>
+		<p> 继承父组件的值：<b title="">{{a0}}</b> ，{{a1}} {{s1}} ：顶层的 data 无法传递下来？</p>
 	</div>
 </template>
 
@@ -31,6 +33,10 @@ export default {
 		s2:2
 	},
 	computed: {
+		countRed:state=>{
+			console.log( "指向",this ); // this === underfined
+			return state.count;
+		},
 		...mapGetters([
 			'evenOrOdd',
 			'showMsg'
@@ -41,10 +47,15 @@ export default {
 			countAlias: 'count',
 			localCount:10,
 			countOther: state => {
-				console.debug( "局部状态", this ); //this 为局部状态 ? 
+				console.debug( "this 指向（对象）", this ); //打包后 this 变为 undefined
 				//(this.localCount)
 				return state.count;
+			},
+			countHot(state){
+				console.log( "this 指向（函数式）", this );
+				return state.count
 			}
+			
 		})
 	},
 	methods: mapActions([
