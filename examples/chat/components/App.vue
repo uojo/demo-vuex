@@ -17,6 +17,7 @@ import { mapGetters } from 'vuex'
 export default {
 	name: 'App',
 	computed:{
+		a0:()=>0,
 		a1(){
 			console.log("容器.computed.this",this);
 			
