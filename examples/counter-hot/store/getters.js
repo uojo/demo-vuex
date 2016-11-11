@@ -1,4 +1,4 @@
-export const limit = state => state.limit
+export const limit = state => (state.limit+1)
 
 export const count = state => state.count
 

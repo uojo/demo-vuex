@@ -1,5 +1,5 @@
 export const increment = state => {
-  state.count++
+  state.count+=3
   state.history.push('increment')
 }
 

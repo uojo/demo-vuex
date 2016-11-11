@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
 import state from './state'
 import * as getters from './getters'
 import * as actions from './actions'
 import * as mutations from './mutations'
+import moduleA from './modules/double'
 
 Vue.use(Vuex)
 
@@ -11,8 +13,11 @@ const store = new Vuex.Store({
 	state,
 	getters,
 	actions,
-	mutations
-})
+	mutations,
+	modules:{
+		moduleA
+	}
+});
 
 if (module.hot) {
 	module.hot.accept([
@@ -21,13 +26,18 @@ if (module.hot) {
 			'./actions',
 			'./mutations'
 		], () => {
+		
+		
 		store.hotUpdate({
-			state: require('./state'),
-			getters: require('./getters'),
-			actions: require('./actions'),
-			mutations: require('./mutations')
+			mutations:( require("./mutations") ),
+			getters:( require("./getters") ),
+			modules:{
+				moduleA:( require("./modules/double").default )
+			}
+
 		})
 	})
 }
+
 
 export default store
