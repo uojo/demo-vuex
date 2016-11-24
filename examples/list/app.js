@@ -1,4 +1,4 @@
-// import 'babel-polyfill'
+import 'babel-polyfill'
 import Vue from 'vue'
 import App from './components/App.vue'
 import store from './store'
@@ -16,5 +16,4 @@ new Vue({
 	render: h => h(App)
 })
 
-// 初始化数据
 getAllMessages(store)

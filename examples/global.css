@@ -16,3 +16,5 @@ a {
 a:hover {
   color: #4fc08d;
 }
+
+.hide {display:none;}

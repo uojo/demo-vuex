@@ -2,12 +2,11 @@ import * as api from '../api'
 import * as types from './mutation-types'
 
 export const getAllMessages = ({ commit }) => {
-	api.getAllMessages(messages => {
-		console.log( "action.data", messages );
-		commit(types.RECEIVE_ALL, {
-			messages
-		});
-	});
+  api.getAllMessages(messages => {
+    commit(types.RECEIVE_ALL, {
+      messages
+    })
+  })
 }
 
 export const sendMessage = ({ commit }, payload) => {
