@@ -12,18 +12,21 @@
 
 <hr />
 
-<b>ModuleA</b>
+<b>ModuleA.Double</b>
 <p><span>CountA：</span>
 	<button @click="incrementDouble">+</button>
 		<b>{{countA}}</b>
-	<button @click="decrementDouble">-</button> 
+	<button @click="ac_decrementDouble">-</button> 
+	
+	<button @click="m_reset">reset</button>
 </p>
 
 </div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import * as Types from './src/modules/types'
+import { mapState, mapGetters, mapActions, mapMutations  } from 'vuex'
 
 export default {
 	computed: {
@@ -46,13 +49,19 @@ export default {
 			'decrement',
 			'incrementIfOdd',
 			'incrementAsync',
-			
-			'decrementDouble'
 		]),
+		...mapActions({
+			'ac_decrementDouble':Types.AC_DOUBLE_DECREMENT,
+		}),
 		incrementDouble(){
 			// console.debug("mapAction", this);
-			this.$store.dispatch("incrementDouble");
-		}
+			
+			// 触发模块中的 action
+			this.$store.dispatch( Types.AC_DOUBLE_INCREMENT );
+		},
+		...mapMutations({
+			"m_reset":Types.MU_DOUBLE_RESET,
+		})
 	}
 }
 </script>

@@ -1,0 +1,11 @@
+// action types
+export const AC_DOUBLE_RESET = 'AC_DOUBLE_RESET'
+export const AC_DOUBLE_INCREMENT = 'AC_DOUBLE_INCREMENT'
+export const AC_DOUBLE_DECREMENT = 'AC_DOUBLE_DECREMENT'
+
+// mutation types
+export const MU_DOUBLE_RESET = 'MU_DOUBLE_RESET'
+export const MU_DOUBLE_INCREMENT = 'MU_DOUBLE_INCREMENT'
+export const MU_DOUBLE_DECREMENT = 'MU_DOUBLE_DECREMENT'
+
+
