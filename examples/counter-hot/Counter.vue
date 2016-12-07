@@ -18,7 +18,7 @@
 		<b>{{countA}}</b>
 	<button @click="ac_decrementDouble">-</button> 
 	
-	<button @click="m_reset">reset</button>
+	<button @click="reset">reset</button>
 </p>
 
 </div>
@@ -61,7 +61,10 @@ export default {
 		},
 		...mapMutations({
 			"m_reset":Types.MU_DOUBLE_RESET,
-		})
+		}),
+		reset(){
+			this.m_reset(10,20);
+		}
 	}
 }
 </script>

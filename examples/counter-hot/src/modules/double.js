@@ -16,7 +16,8 @@ const mutations = {
 	[Types.MU_DOUBLE_DECREMENT](state){
 		state.countA/=2;
 	},
-	[Types.MU_DOUBLE_RESET](state){
+	[Types.MU_DOUBLE_RESET](state, payload ){
+		console.log( state, payload );
 		state.countA = 1;
 		state.countB = 1;
 	}
