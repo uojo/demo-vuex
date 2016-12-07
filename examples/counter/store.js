@@ -56,8 +56,8 @@ const actions = {
     })
   },
   iDouble:({commit})=>new Promise((resolve,reject)=>{
-	commit("increment");
-	resolve();	 
+  	commit("increment");
+  	resolve();	 
   }),
   incrementDouble:({dispatch,commit})=> {
 	dispatch("iDouble").then(()=>{

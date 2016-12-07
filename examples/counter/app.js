@@ -17,6 +17,7 @@ new Vue({
 	render: createElement => {
 		// console.log("createElement", createElement);
 		console.log("组件设置", Counter);
+		console.log("this", this);
 		// 相当与将组件 Counter.vue 附着到 Vue的options上，以便将 template 和 components ... 加上
 		
 		return createElement(Counter);
